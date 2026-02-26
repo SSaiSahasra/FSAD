@@ -38,7 +38,7 @@ const ProtectedRoute = ({ children, role }) => {
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <Router basename="/FSAD">
         <Routes>
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
