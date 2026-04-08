@@ -16,6 +16,30 @@ npm run dev
 ### Step 3: Open Browser
 Open `http://localhost:5173`
 
+### Google Sign-In Setup
+If Google Sign-In shows `Error 400: origin_mismatch`, open your OAuth 2.0 Client ID in Google Cloud Console and add the exact frontend origin to `Authorized JavaScript origins`.
+
+For local development with this project, add:
+
+```text
+http://localhost:5173
+```
+
+If you open the app with a different host, add that exact origin too, for example:
+
+```text
+http://127.0.0.1:5173
+https://your-deployed-domain.com
+```
+
+Important checks:
+
+- Do not add paths. Use origin only, for example `http://localhost:5173` (not `http://localhost:5173/login`).
+- Keep frontend client ID and backend client ID the same:
+	- `.env` -> `VITE_GOOGLE_CLIENT_ID`
+	- `backend/src/main/resources/application.properties` -> `google.client-id`
+- This project now uses a fixed Vite dev origin (`http://localhost:5173`). If port `5173` is occupied, stop the process using it instead of switching to another port, or also add that alternate origin in Google Cloud Console.
+
 ---
 
 ## 🔐 Demo Login Credentials
